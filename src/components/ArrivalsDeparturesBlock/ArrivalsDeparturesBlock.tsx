@@ -14,7 +14,7 @@ function AirlineLogo({ code, name }: { code: string; name: string }) {
   }
   return (
     <img
-      src={`/src/assets/Airlines/${code.toLowerCase()}.svg`}
+      src={`/Airlines/${code.toLowerCase()}.svg`}
       alt={name}
       className="adb-airline-logo"
       onError={() => setError(true)}
