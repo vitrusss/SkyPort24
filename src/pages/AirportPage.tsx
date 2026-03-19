@@ -13,26 +13,39 @@ export default function AirportPage() {
   const { iata } = useParams<{ iata: string }>()
   const airport = getAirport(iata ?? '')
 
+  if (!airport) {
+    return (
+      <div className="ap-root">
+        <main className="ap-main">
+          <div className="ap-container">
+            <Header />
+            <div className="ap-gap-header" />
+            <div className="ap-not-found">
+              <p className="ap-not-found-title">Airport data coming soon</p>
+              <p className="ap-not-found-sub">We're working on adding full details for this airport.</p>
+            </div>
+          </div>
+        </main>
+      </div>
+    )
+  }
+
   return (
     <div className="ap-root">
       <main className="ap-main">
         <div className="ap-container">
           <Header />
           <div className="ap-gap-header" />
-          {!airport ? (
-            <p className="ap-not-found">Airport "{iata?.toUpperCase()}" not found.</p>
-          ) : (
-            <div className="ap-blocks">
-              <AirportIdentityBlock airport={airport} />
-              <div className="ap-row-3col">
-                <LocalTimeBlock airport={airport} />
-                <WeatherBlock airport={airport} />
-                <AirportPulseBlock airport={airport} />
-              </div>
-              <ArrivalsDeparturesBlock airport={airport} />
-              <ActivityPatternBlock airport={airport} />
+          <div className="ap-blocks">
+            <AirportIdentityBlock airport={airport} />
+            <div className="ap-row-3col">
+              <LocalTimeBlock airport={airport} />
+              <WeatherBlock airport={airport} />
+              <AirportPulseBlock airport={airport} />
             </div>
-          )}
+            <ArrivalsDeparturesBlock airport={airport} />
+            <ActivityPatternBlock airport={airport} />
+          </div>
         </div>
       </main>
     </div>
