@@ -7,7 +7,17 @@ import WeatherBlock from '../components/WeatherBlock/WeatherBlock'
 import AirportPulseBlock from '../components/AirportPulseBlock/AirportPulseBlock'
 import ArrivalsDeparturesBlock from '../components/ArrivalsDeparturesBlock/ArrivalsDeparturesBlock'
 import ActivityPatternBlock from '../components/ActivityPatternBlock/ActivityPatternBlock'
+import HubAirlineBlock from '../components/HubAirlineBlock/HubAirlineBlock'
 import './AirportPage.css'
+
+const JFK_HUB_AIRLINES = [
+  { iata: 'AA', name: 'American Airlines', role: 'Hub'     as const },
+  { iata: 'DL', name: 'Delta Air Lines',   role: 'Hub'     as const },
+  { iata: 'B6', name: 'JetBlue Airways',   role: 'Base'    as const },
+  { iata: 'UA', name: 'United Airlines',   role: 'Partner' as const },
+]
+
+const JFK_EDITORIAL = 'JFK is a major hub for American Airlines and Delta, with JetBlue operating a large base for domestic and Caribbean routes and strong transatlantic connections across all carriers.'
 
 export default function AirportPage() {
   const { iata } = useParams<{ iata: string }>()
@@ -45,6 +55,7 @@ export default function AirportPage() {
             </div>
             <ArrivalsDeparturesBlock airport={airport} />
             <ActivityPatternBlock airport={airport} />
+            <HubAirlineBlock airlines={JFK_HUB_AIRLINES} editorial={JFK_EDITORIAL} />
           </div>
         </div>
       </main>

@@ -1,0 +1,106 @@
+.hab-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  box-shadow: 0px 1px 3px rgba(28,25,23,0.06), 0px 4px 16px rgba(28,25,23,0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.hab-card:hover {
+  box-shadow: 0px 2px 8px rgba(28,25,23,0.08), 0px 8px 24px rgba(28,25,23,0.06);
+}
+
+.hab-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.hab-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.hab-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hab-row:last-child {
+  border-bottom: none;
+}
+
+.hab-logo-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid var(--stone-100);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.hab-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.hab-logo-fallback {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--blue-100);
+  color: var(--color-accent);
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hab-name {
+  flex: 1;
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.hab-badge {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.hab-badge--hub {
+  background: #EAF3FA;
+  color: #0284C7;
+}
+
+.hab-badge--base,
+.hab-badge--partner {
+  background: #F5F5F4;
+  color: #6C6760;
+}
+
+.hab-editorial {
+  font-size: var(--font-size-s);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
