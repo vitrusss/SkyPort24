@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-left" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-        <img src={logoImg} alt="SkyPort24 logo" className="header-logo-img" />
+        <img src={logoImg} alt="SkyPort24 logo" className="header-logo-img" loading="eager" decoding="sync" />
         <span className="header-title">SkyPort24</span>
       </div>
 

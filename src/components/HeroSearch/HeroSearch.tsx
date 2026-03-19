@@ -4,10 +4,10 @@ import './HeroSearch.css'
 import airportIllustration from '../../assets/airport-illustration.png'
 import { searchDestinations } from '../../utils/destinySearch'
 import type { DestinyResult } from '../../utils/destinySearch'
+import { HugeiconsIcon } from '@hugeicons/react'
+import { Search01Icon, Cancel01Icon } from '@hugeicons/core-free-icons'
 
 // ─── Assets ─────────────────────────────────────────────────────────────────
-const SEARCH_ICON   = 'https://www.figma.com/api/mcp/asset/bba81635-dd30-4d38-bf66-30f43ef08be3'
-const CANCEL_ICON   = 'https://www.figma.com/api/mcp/asset/9ea47f16-be52-4b32-ad00-37a75a6d3a8f'
 const LOCATION_ICON = 'https://www.figma.com/api/mcp/asset/264faf33-ddee-48c4-90b4-db28bf68e6d0'
 const AIRPORT_ICON  = 'https://www.figma.com/api/mcp/asset/ca4229dd-aa4a-4f9b-a59e-6f5b8707ee3a'
 
@@ -60,9 +60,11 @@ function SearchBar() {
   const [isFocused, setIsFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null)
 
   const [suggestions, setSuggestions] = useState<DestinyResult[]>([])
   const [loading, setLoading] = useState(false)
+  const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0 })
   const hasQuery = query.trim().length > 0
   const isActive = state === 'open' && hasQuery
   const isHighlighted = isFocused || hasQuery
@@ -81,6 +83,17 @@ function SearchBar() {
     }, 250)
     return () => clearTimeout(timer)
   }, [query])
+
+  useEffect(() => {
+    if ((suggestions.length > 0 || loading) && wrapperRef.current) {
+      const rect = wrapperRef.current.getBoundingClientRect()
+      setDropdownPos({
+        top: rect.bottom + 8,
+        left: rect.left,
+        width: rect.width,
+      })
+    }
+  }, [suggestions, loading])
 
   const handleSelect = useCallback((result: DestinyResult) => {
     const iata = result.iata || result.searchTarget
@@ -135,10 +148,10 @@ function SearchBar() {
   }, [handleSearch, handleCancel])
 
   return (
-    <div className="sb-wrapper" ref={containerRef}>
+    <div className="sb-wrapper" ref={(el) => { containerRef.current = el; wrapperRef.current = el }}>
       {/* Pill */}
       <div className={`sb-pill${isHighlighted ? ' sb-pill--open' : ''}`}>
-        <img src={SEARCH_ICON} alt="" width={24} height={24} className="sb-search-icon" />
+        <HugeiconsIcon icon={Search01Icon} size={18} color="#A8A29E" />
 
         <input
           ref={inputRef}
@@ -161,7 +174,7 @@ function SearchBar() {
             onClick={handleCancel}
             aria-label="Clear search"
           >
-            <img src={CANCEL_ICON} alt="" width={20} height={20} />
+            <HugeiconsIcon icon={Cancel01Icon} size={16} color="#A8A29E" />
           </button>
         )}
 
@@ -177,7 +190,7 @@ function SearchBar() {
 
       {/* Dropdown — only when 2+ chars typed */}
       {isActive && query.trim().length >= 2 && (loading || suggestions.length > 0) && (
-        <div className="sb-dropdown" role="listbox">
+        <div className="sb-dropdown" role="listbox" style={{ position: 'fixed', top: dropdownPos.top, left: dropdownPos.left, width: dropdownPos.width, zIndex: 1000 }}>
           <div className="sb-dropdown-scroll">
             {loading && suggestions.length === 0 && (
               <div className="sb-city-header" style={{ cursor: 'default' }}>
@@ -275,7 +288,7 @@ export default function HeroSearch() {
         </div>
 
         <p className="hero-subtitle">
-          Airport intelligence, local time context, weather, and flight pulse for airports worldwide.
+          <span>Airport intelligence, local time context, weather, and<br />flight pulse for airports worldwide.</span>
         </p>
 
         <SearchBar />

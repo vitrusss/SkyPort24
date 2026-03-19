@@ -7,7 +7,7 @@ export default function Footer() {
       <span className="footer-credit">
         Designed &amp; built by{' '}
         <a
-          href="https://vitrus.studio"
+          href="https://www.linkedin.com/in/vitaliitrus/"
           target="_blank"
           rel="noopener noreferrer"
           className="footer-link"

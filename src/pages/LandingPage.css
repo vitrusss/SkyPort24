@@ -1,32 +1,52 @@
 .landing-page {
   min-height: 100vh;
   height: 100vh;
-  background: #f4f2ee;
-  font-family: 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  background: #f4f2ee;
+}
+
+.landing-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  padding: 40px 80px;
 }
 
 .landing-container {
-  max-width: 1166px;
   width: 100%;
-  margin: 0 auto;
+  max-width: 1166px;
+}
+
+.landing-footer {
+  flex-shrink: 0;
+  height: 56px;
   padding: 0 80px;
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.landing-gap-hero {
-  flex: 1;
-  min-height: 24px;
-  max-height: 48px;
+.landing-footer-left {
+  font-size: var(--font-size-s);
+  color: var(--color-text-muted);
 }
 
-.landing-gap-footer {
-  flex: 1;
-  min-height: 16px;
-  max-height: 40px;
+.landing-footer-right {
+  font-size: var(--font-size-s);
+  color: var(--color-text-muted);
+}
+
+.landing-footer-right a {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.landing-footer-right a:hover {
+  color: var(--color-text-primary);
 }
