@@ -29,6 +29,29 @@ function Spinner() {
   return <span className="sb-spinner" aria-hidden="true" />
 }
 
+// ─── Group flat API results into city+airports clusters ──────────────────────
+interface ResultGroup {
+  city: DestinyResult
+  airports: DestinyResult[]
+}
+
+function groupResults(suggestions: DestinyResult[]): ResultGroup[] {
+  const groups: ResultGroup[] = []
+  for (const result of suggestions) {
+    if (result.type === 'city') {
+      groups.push({ city: result, airports: [] })
+    } else {
+      const last = groups[groups.length - 1]
+      if (result.child && last) {
+        last.airports.push(result)
+      } else {
+        groups.push({ city: result, airports: [] })
+      }
+    }
+  }
+  return groups
+}
+
 // ─── SearchBar ───────────────────────────────────────────────────────────────
 function SearchBar() {
   const navigate = useNavigate()
@@ -163,40 +186,50 @@ function SearchBar() {
                 </div>
               </div>
             )}
-            {suggestions.map((result, idx) => (
-              <div key={`${result.code}-${idx}`} className="sb-city-group" style={{ animationDelay: `${idx * 0.04}s` }}>
-                {result.type === 'city' ? (
-                  <div className="sb-city-header" style={{ cursor: 'pointer' }} onClick={() => handleSelect(result)}>
+            {groupResults(suggestions).map((group, gi, groups) => (
+              <div key={`${group.city.code}-${gi}`} className="sb-city-group" style={{ animationDelay: `${gi * 0.04}s` }}>
+                <div className="sb-city-header">
+                  {group.city.image ? (
+                    <img
+                      src={group.city.image}
+                      alt=""
+                      width={24}
+                      height={24}
+                      className="sb-city-icon"
+                      style={{ objectFit: 'cover', borderRadius: 4 }}
+                    />
+                  ) : (
                     <img src={LOCATION_ICON} alt="" width={24} height={24} className="sb-city-icon" />
-                    <div className="sb-city-meta">
-                      <span className="sb-city-name">{result.title}</span>
-                      <span className="sb-city-state">{result.subTitle}</span>
-                    </div>
-                    <span className="sb-city-code">{result.iata || result.code}</span>
+                  )}
+                  <div className="sb-city-meta">
+                    <span className="sb-city-name">{group.city.title}</span>
+                    <span className="sb-city-state">{group.city.subTitle}</span>
                   </div>
-                ) : (
+                  <span className="sb-city-code">{group.city.iata || group.city.code}</span>
+                </div>
+
+                {group.airports.length > 0 && (
                   <ul className="sb-airport-list" role="group">
-                    <li>
-                      <button
-                        className="sb-airport-row"
-                        role="option"
-                        aria-selected={false}
-                        style={result.child ? { paddingLeft: 40 } : undefined}
-                        onClick={() => handleSelect(result)}
-                      >
-                        {result.image ? (
-                          <img src={result.image} alt="" width={16} height={16} className="sb-airport-icon" style={{ objectFit: 'cover', borderRadius: 2 }} />
-                        ) : (
+                    {group.airports.map((airport, ai) => (
+                      <li key={airport.code}>
+                        <button
+                          className="sb-airport-row"
+                          role="option"
+                          aria-selected={false}
+                          onClick={() => handleSelect(airport)}
+                        >
                           <img src={AIRPORT_ICON} alt="" width={16} height={16} className="sb-airport-icon" />
-                        )}
-                        <span className="sb-airport-name">{result.title}</span>
-                        <span className="sb-airport-code">{result.iata || result.code}</span>
-                        <span className="sb-arrow-icon"><ChevronRight /></span>
-                      </button>
-                    </li>
+                          <span className="sb-airport-name">{airport.title}</span>
+                          <span className="sb-airport-code">{airport.iata || airport.code}</span>
+                          <span className="sb-arrow-icon"><ChevronRight /></span>
+                        </button>
+                        {ai < group.airports.length - 1 && <div className="sb-airport-sep" />}
+                      </li>
+                    ))}
                   </ul>
                 )}
-                {idx < suggestions.length - 1 && <div className="sb-group-sep" />}
+
+                {gi < groups.length - 1 && <div className="sb-group-sep" />}
               </div>
             ))}
           </div>
