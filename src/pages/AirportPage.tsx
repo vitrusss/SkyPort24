@@ -16,9 +16,9 @@ export default function AirportPage() {
   if (!airport) {
     return (
       <div className="ap-root">
-        <Header />
         <main className="ap-main">
           <div className="ap-container">
+            <Header />
             <div className="ap-gap-header" />
             <div className="ap-not-found">
               <p className="ap-not-found-title">Airport data coming soon</p>
@@ -32,9 +32,9 @@ export default function AirportPage() {
 
   return (
     <div className="ap-root">
-      <Header />
       <main className="ap-main">
         <div className="ap-container">
+          <Header />
           <div className="ap-gap-header" />
           <div className="ap-blocks">
             <AirportIdentityBlock airport={airport} />

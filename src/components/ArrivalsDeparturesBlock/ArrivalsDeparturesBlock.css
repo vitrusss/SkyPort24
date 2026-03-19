@@ -164,6 +164,7 @@
   grid-template-columns: 60px 90px 1fr 180px 130px 80px 60px;
   gap: 8px;
   padding: 12px;
+  min-height: 56px;
   align-items: center;
   border-bottom: 1px solid var(--color-border);
   transition: background 0.15s ease;
@@ -185,10 +186,18 @@
 
 .adb-flight {
   font-size: var(--font-size-s);
-  font-weight: 600;
-  color: var(--color-accent);
   font-family: 'SF Mono', 'Fira Code', monospace;
   letter-spacing: 0.03em;
+}
+
+.adb-flight-code {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.adb-flight-num {
+  color: var(--color-text-primary);
+  font-weight: 600;
 }
 
 .adb-place {
@@ -203,22 +212,33 @@
   gap: 8px;
 }
 
-.adb-airline-logo {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  object-fit: contain;
+.adb-airline-logo-wrap {
+  width: 32px;
+  height: 32px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid var(--stone-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   flex-shrink: 0;
 }
 
-.adb-airline-fallback {
+.adb-airline-logo {
   width: 24px;
   height: 24px;
-  border-radius: 4px;
+  object-fit: contain;
+}
+
+.adb-airline-fallback {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
   background: var(--blue-100);
-  color: var(--blue-700);
-  font-size: 8px;
-  font-weight: 700;
+  color: var(--color-accent);
+  font-size: 11px;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;

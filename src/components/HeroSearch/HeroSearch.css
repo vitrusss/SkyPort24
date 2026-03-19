@@ -3,6 +3,7 @@
 .hero-card {
   position: relative;
   overflow: visible;
+  width: 100%;
   border-radius: 40px;
   padding: 48px;
   background: linear-gradient(73deg, #f3f3f1 1%, #faf9f7 99%);
@@ -403,6 +404,10 @@
 }
 
 /* ─── Quick chips ───────────────────────────────────────────────────────── */
+
+.sb-chips-wrapper {
+  min-height: 68px;
+}
 
 .sb-quick-label {
   font-family: 'Inter', sans-serif;

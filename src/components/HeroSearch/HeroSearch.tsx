@@ -249,28 +249,26 @@ function SearchBar() {
         </div>
       )}
 
-      {/* Popular airport chips — only when search is empty */}
-      {query.length === 0 && (
-        <>
-          <span className="sb-quick-label">Popular airports</span>
-          <div className="sb-quick-chips">
-            {[
-              { label: 'New York',   code: 'JFK' },
-              { label: 'London',     code: 'LHR' },
-              { label: 'Amsterdam',  code: 'AMS' },
-              { label: 'Tokyo',      code: 'HND' },
-            ].map(({ label, code }) => (
-              <button
-                key={code}
-                className="sb-quick-chip"
-                onClick={() => navigate(`/airport/${code}`)}
-              >
-                {label} · {code}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
+      {/* Popular airport chips — always in DOM to preserve card height */}
+      <div className="sb-chips-wrapper" style={query.length > 0 ? { visibility: 'hidden' } : undefined}>
+        <span className="sb-quick-label">Popular airports</span>
+        <div className="sb-quick-chips">
+          {[
+            { label: 'New York',   code: 'JFK' },
+            { label: 'London',     code: 'LHR' },
+            { label: 'Amsterdam',  code: 'AMS' },
+            { label: 'Tokyo',      code: 'HND' },
+          ].map(({ label, code }) => (
+            <button
+              key={code}
+              className="sb-quick-chip"
+              onClick={() => navigate(`/airport/${code}`)}
+            >
+              {label} · {code}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

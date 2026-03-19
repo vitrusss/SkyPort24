@@ -13,12 +13,26 @@ function AirlineLogo({ code, name }: { code: string; name: string }) {
     return <div className="adb-airline-fallback">{code.toUpperCase()}</div>
   }
   return (
-    <img
-      src={`/Airlines/${code.toLowerCase()}.svg`}
-      alt={name}
-      className="adb-airline-logo"
-      onError={() => setError(true)}
-    />
+    <div className="adb-airline-logo-wrap">
+      <img
+        src={`/Airlines/${code.toLowerCase()}.svg`}
+        alt={name}
+        className="adb-airline-logo"
+        onError={() => setError(true)}
+      />
+    </div>
+  )
+}
+
+function FlightNumber({ flight }: { flight: string }) {
+  const match = flight.match(/^([A-Z0-9]{2,3})\s*(\d+.*)$/i)
+  if (!match) return <span className="adb-flight">{flight}</span>
+  return (
+    <span className="adb-flight">
+      <span className="adb-flight-code">{match[1]}</span>
+      {' '}
+      <span className="adb-flight-num">{match[2]}</span>
+    </span>
   )
 }
 
@@ -114,7 +128,7 @@ export default function ArrivalsDeparturesBlock({ airport }: Props) {
         {filteredRows.map((row, i) => (
           <div className="adb-row" key={i}>
             <span className="adb-time">{row.scheduled}</span>
-            <span className="adb-flight">{row.flight}</span>
+            <FlightNumber flight={row.flight} />
             <span className="adb-place">{tab === 'departures' ? (row as any).to : (row as any).from}</span>
             <span className="adb-airline-cell">
               <AirlineLogo code={(row as any).airlineCode || ''} name={(row as any).airline || ''} />
