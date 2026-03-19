@@ -28,11 +28,18 @@ export default function ActivityPatternBlock({ airport }: Props) {
 
   const currentHour = getLocalHour()
 
+  // Parse both hours from "16:00 – 17:00" format
   const isPeak = (hour: number): boolean => {
-    const match = activity.peakHour.match(/(\d+):/)
-    if (!match) return false
-    const peakH = parseInt(match[1])
-    return hour >= peakH && hour < peakH + 2
+    const matches = activity.peakHour.match(/(\d+):/g)
+    if (!matches || matches.length < 2) {
+      const single = activity.peakHour.match(/(\d+):/)
+      if (!single) return false
+      const peakH = parseInt(single[1])
+      return hour >= peakH && hour < peakH + 2
+    }
+    const startH = parseInt(matches[0])
+    const endH = parseInt(matches[1])
+    return hour >= startH && hour <= endH
   }
 
   const isQuiet = (hour: number): boolean => hour >= 0 && hour <= 5
@@ -40,8 +47,8 @@ export default function ActivityPatternBlock({ airport }: Props) {
   const getBarColor = (hour: number): string => {
     if (hour === currentHour) return '#0284C7'
     if (isPeak(hour)) return '#0EA5E9'
-    if (isQuiet(hour)) return '#ECEAE6'
-    return '#D0CEC9'
+    if (isQuiet(hour)) return '#E8E6E1'
+    return '#C8D6E0'
   }
 
   const getBarHeight = (flights: number): number =>
@@ -55,11 +62,10 @@ export default function ActivityPatternBlock({ airport }: Props) {
         <span className="apb2-summary">{activity.summary}</span>
       </div>
 
-      {/* Chart + labels */}
+      {/* Chart + baseline + labels */}
       <div className="apb2-chart-area">
         {/* Bars only */}
         <div className="apb2-chart">
-          <div className="apb2-baseline" />
           {hours.map((h) => (
             <div className="apb2-bar-col" key={h.hour}>
               <div className="apb2-bar-track">
@@ -82,10 +88,17 @@ export default function ActivityPatternBlock({ airport }: Props) {
           ))}
         </div>
 
-        {/* Labels row — separate from bars */}
+        {/* Baseline rule between bars and labels */}
+        <div className="apb2-baseline-rule" />
+
+        {/* Labels row — absolutely positioned under their bars */}
         <div className="apb2-labels">
           {LABEL_HOURS.map(h => (
-            <span key={h} className="apb2-hour-label">
+            <span
+              key={h}
+              className="apb2-hour-label"
+              style={{ left: `${(h + 0.5) / 24 * 100}%` }}
+            >
               {String(h).padStart(2, '0')}
             </span>
           ))}
