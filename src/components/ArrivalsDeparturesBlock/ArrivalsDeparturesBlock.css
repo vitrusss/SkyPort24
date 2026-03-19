@@ -191,12 +191,12 @@
 }
 
 .adb-flight-code {
-  color: var(--color-text-muted);
+  color: var(--color-accent);
   font-weight: 500;
 }
 
 .adb-flight-num {
-  color: var(--color-text-primary);
+  color: var(--color-accent);
   font-weight: 600;
 }
 
@@ -215,9 +215,6 @@
 .adb-airline-logo-wrap {
   width: 32px;
   height: 32px;
-  background: white;
-  border-radius: 6px;
-  border: 1px solid var(--stone-100);
   display: flex;
   align-items: center;
   justify-content: center;
