@@ -2,7 +2,8 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './HeroSearch.css'
 import airportIllustration from '../../assets/airport-illustration.png'
-import { searchDestinations, DestinyResult } from '../../utils/destinySearch'
+import { searchDestinations } from '../../utils/destinySearch'
+import type { DestinyResult } from '../../utils/destinySearch'
 
 // ─── Assets ─────────────────────────────────────────────────────────────────
 const SEARCH_ICON   = 'https://www.figma.com/api/mcp/asset/bba81635-dd30-4d38-bf66-30f43ef08be3'
