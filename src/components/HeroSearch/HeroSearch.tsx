@@ -193,13 +193,13 @@ function SearchBar() {
                     <img
                       src={group.city.image}
                       alt=""
-                      width={24}
-                      height={24}
+                      width={36}
+                      height={36}
                       className="sb-city-icon"
-                      style={{ objectFit: 'cover', borderRadius: 4 }}
+                      style={{ objectFit: 'cover', borderRadius: 6 }}
                     />
                   ) : (
-                    <img src={LOCATION_ICON} alt="" width={24} height={24} className="sb-city-icon" />
+                    <img src={LOCATION_ICON} alt="" width={36} height={36} className="sb-city-icon" />
                   )}
                   <div className="sb-city-meta">
                     <span className="sb-city-name">{group.city.title}</span>
