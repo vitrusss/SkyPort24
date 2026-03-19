@@ -5,6 +5,8 @@ interface Props {
   airport: AirportData
 }
 
+const LABEL_HOURS = [0, 3, 6, 9, 12, 15, 18, 21]
+
 export default function ActivityPatternBlock({ airport }: Props) {
   const { activity } = airport
   const hours = activity.hours
@@ -38,25 +40,26 @@ export default function ActivityPatternBlock({ airport }: Props) {
   const getBarColor = (hour: number): string => {
     if (hour === currentHour) return '#0284C7'
     if (isPeak(hour)) return '#0EA5E9'
-    if (isQuiet(hour)) return '#E2E0DC'
+    if (isQuiet(hour)) return '#ECEAE6'
     return '#D0CEC9'
   }
 
   const getBarHeight = (flights: number): number =>
     Math.max(4, Math.round((flights / maxValue) * 100))
 
-  const showLabel = (hour: number): boolean =>
-    [0, 3, 6, 9, 12, 15, 18, 21].includes(hour)
-
   return (
     <div className="apb2-card">
+      {/* Top row */}
       <div className="apb2-header">
         <span className="apb2-label">Activity Pattern</span>
         <span className="apb2-summary">{activity.summary}</span>
       </div>
 
+      {/* Chart + labels */}
       <div className="apb2-chart-area">
+        {/* Bars only */}
         <div className="apb2-chart">
+          <div className="apb2-baseline" />
           {hours.map((h) => (
             <div className="apb2-bar-col" key={h.hour}>
               <div className="apb2-bar-track">
@@ -70,28 +73,33 @@ export default function ActivityPatternBlock({ airport }: Props) {
                     height: `${getBarHeight(h.flights)}%`,
                     background: getBarColor(h.hour),
                     ...(h.hour === currentHour
-                      ? { boxShadow: '0 0 8px rgba(2,132,199,0.4)' }
+                      ? { boxShadow: '0 0 8px rgba(2,132,199,0.35)' }
                       : {}),
                   }}
                 />
               </div>
-              {showLabel(h.hour) && (
-                <span className="apb2-hour-label">
-                  {String(h.hour).padStart(2, '0')}
-                </span>
-              )}
             </div>
+          ))}
+        </div>
+
+        {/* Labels row — separate from bars */}
+        <div className="apb2-labels">
+          {LABEL_HOURS.map(h => (
+            <span key={h} className="apb2-hour-label">
+              {String(h).padStart(2, '0')}
+            </span>
           ))}
         </div>
       </div>
 
+      {/* Legend */}
       <div className="apb2-legend">
         <div className="apb2-legend-item">
-          <span className="apb2-legend-swatch apb2-legend-swatch--peak" />
+          <span className="apb2-legend-dot apb2-legend-dot--peak" />
           <span className="apb2-legend-text">Peak hours&nbsp;&nbsp;{activity.peakHour}</span>
         </div>
         <div className="apb2-legend-item">
-          <span className="apb2-legend-swatch apb2-legend-swatch--quiet" />
+          <span className="apb2-legend-dot apb2-legend-dot--quiet" />
           <span className="apb2-legend-text">Quiet period&nbsp;&nbsp;{activity.quietHour}</span>
         </div>
       </div>

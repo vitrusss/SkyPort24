@@ -38,29 +38,41 @@
 
 .apb2-chart-area {
   margin-top: 32px;
-  padding-top: 40px;
-  position: relative;
+  padding-top: 40px; /* headroom for tooltips */
 }
 
+/* Chart: bars only */
 .apb2-chart {
   display: flex;
   align-items: flex-end;
   gap: 3px;
+  width: 100%;
+  height: 120px;
+  position: relative;
+}
+
+/* Baseline rule at bottom of chart */
+.apb2-baseline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #E7E5E4;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ─── Bar column ────────────────────────────────────────────────────────── */
 
 .apb2-bar-col {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
+  height: 100%;
   position: relative;
 }
 
 .apb2-bar-track {
-  height: 120px;
+  height: 100%;
   width: 100%;
   position: relative;
   display: flex;
@@ -72,6 +84,8 @@
   border-radius: 2px 2px 0 0;
   min-height: 4px;
   transition: filter 0.15s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .apb2-bar-col:hover .apb2-bar {
@@ -114,7 +128,13 @@
   color: var(--color-text-muted);
 }
 
-/* ─── Hour labels ───────────────────────────────────────────────────────── */
+/* ─── Labels row (separate from bars) ──────────────────────────────────── */
+
+.apb2-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
 
 .apb2-hour-label {
   font-size: 11px;
@@ -123,30 +143,33 @@
   line-height: 1;
 }
 
-/* ─── Legend ────────────────────────────────────────────────────────────── */
+/* ─── Legend (pill chips) ───────────────────────────────────────────────── */
 
 .apb2-legend {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 8px;
   margin-top: 16px;
 }
 
 .apb2-legend-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
+  background: #F5F5F4;
+  border-radius: 999px;
+  padding: 4px 12px;
 }
 
-.apb2-legend-swatch {
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
+.apb2-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   flex-shrink: 0;
 }
 
-.apb2-legend-swatch--peak  { background: #0EA5E9; }
-.apb2-legend-swatch--quiet { background: #D0CEC9; }
+.apb2-legend-dot--peak  { background: #0EA5E9; }
+.apb2-legend-dot--quiet { background: #D0CEC9; }
 
 .apb2-legend-text {
   font-size: 12px;
