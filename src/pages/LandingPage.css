@@ -6,6 +6,12 @@
   background: #f4f2ee;
 }
 
+.landing-page > .header {
+  padding-left: 80px;
+  padding-right: 80px;
+  box-sizing: border-box;
+}
+
 .landing-main {
   flex: 1;
   min-height: 0;
