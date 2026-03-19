@@ -10,11 +10,12 @@
   box-shadow: 0px 2px 8px rgba(28,25,23,0.08), 0px 8px 24px rgba(28,25,23,0.06);
 }
 
+/* ─── Header ────────────────────────────────────────────────────────────── */
+
 .apb2-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
   gap: 16px;
 }
 
@@ -33,96 +34,121 @@
   text-align: right;
 }
 
+/* ─── Chart area ────────────────────────────────────────────────────────── */
+
+.apb2-chart-area {
+  margin-top: 32px;
+  padding-top: 40px;
+  position: relative;
+}
+
 .apb2-chart {
   display: flex;
   align-items: flex-end;
   gap: 3px;
-  height: 80px;
-  margin-bottom: 8px;
 }
+
+/* ─── Bar column ────────────────────────────────────────────────────────── */
 
 .apb2-bar-col {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  gap: 4px;
+  gap: 6px;
+  position: relative;
 }
 
-.apb2-bar-wrap {
-  flex: 1;
+.apb2-bar-track {
+  height: 120px;
   width: 100%;
+  position: relative;
   display: flex;
   align-items: flex-end;
 }
 
 .apb2-bar {
   width: 100%;
-  background: var(--stone-100);
   border-radius: 2px 2px 0 0;
-  transition: background 0.15s ease;
   min-height: 4px;
-}
-
-.apb2-bar--peak {
-  background: var(--blue-400);
+  transition: filter 0.15s ease;
 }
 
 .apb2-bar-col:hover .apb2-bar {
-  background: var(--stone-300);
+  filter: brightness(0.88);
 }
 
-.apb2-bar-col:hover .apb2-bar--peak {
-  background: var(--blue-500);
+/* ─── Tooltip ───────────────────────────────────────────────────────────── */
+
+.apb2-tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  background: white;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 11px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  z-index: 10;
+  transition: opacity 0.1s ease;
 }
+
+.apb2-bar-col:hover .apb2-tooltip {
+  opacity: 1;
+}
+
+.apb2-tooltip-hour {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.apb2-tooltip-count {
+  color: var(--color-text-muted);
+}
+
+/* ─── Hour labels ───────────────────────────────────────────────────────── */
 
 .apb2-hour-label {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-text-muted);
   font-weight: 400;
-  letter-spacing: 0.02em;
   line-height: 1;
 }
 
-.apb2-footer {
+/* ─── Legend ────────────────────────────────────────────────────────────── */
+
+.apb2-legend {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding-top: 12px;
-  border-top: 1px solid var(--color-border);
+  gap: 24px;
+  margin-top: 16px;
 }
 
-.apb2-footer-item {
+.apb2-legend-item {
   display: flex;
   align-items: center;
   gap: 7px;
 }
 
-.apb2-footer-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
+.apb2-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
   flex-shrink: 0;
 }
 
-.apb2-footer-dot--peak { background: var(--blue-400); }
-.apb2-footer-dot--quiet { background: var(--stone-200); }
+.apb2-legend-swatch--peak  { background: #0EA5E9; }
+.apb2-legend-swatch--quiet { background: #D0CEC9; }
 
-.apb2-footer-label {
+.apb2-legend-text {
   font-size: 12px;
   color: var(--color-text-secondary);
-  opacity: 0.7;
-}
-
-.apb2-footer-value {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-
-.apb2-footer-divider {
-  width: 1px;
-  height: 16px;
-  background: var(--color-border);
 }
