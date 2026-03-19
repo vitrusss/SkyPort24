@@ -214,10 +214,18 @@
 /* ─── Dropdown ──────────────────────────────────────────────────────────── */
 
 .sb-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  z-index: 1000;
   background: white;
   border-radius: 16px;
   box-shadow: 0px 8px 32px rgba(28,25,23,0.12), 0px 2px 8px rgba(28,25,23,0.08);
-  overflow: hidden;
+  max-height: 400px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   animation: fadeSlideIn 0.18s ease forwards;
 }
 
@@ -226,9 +234,6 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  max-height: calc(100vh - 320px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 }

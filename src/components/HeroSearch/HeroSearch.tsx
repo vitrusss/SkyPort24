@@ -60,11 +60,9 @@ function SearchBar() {
   const [isFocused, setIsFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const wrapperRef = useRef<HTMLDivElement>(null)
 
   const [suggestions, setSuggestions] = useState<DestinyResult[]>([])
   const [loading, setLoading] = useState(false)
-  const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0 })
   const hasQuery = query.trim().length > 0
   const isActive = state === 'open' && hasQuery
   const isHighlighted = isFocused || hasQuery
@@ -83,17 +81,6 @@ function SearchBar() {
     }, 250)
     return () => clearTimeout(timer)
   }, [query])
-
-  useEffect(() => {
-    if ((suggestions.length > 0 || loading) && wrapperRef.current) {
-      const rect = wrapperRef.current.getBoundingClientRect()
-      setDropdownPos({
-        top: rect.bottom + 8,
-        left: rect.left,
-        width: rect.width,
-      })
-    }
-  }, [suggestions, loading])
 
   const handleSelect = useCallback((result: DestinyResult) => {
     const iata = result.iata || result.searchTarget
@@ -148,7 +135,7 @@ function SearchBar() {
   }, [handleSearch, handleCancel])
 
   return (
-    <div className="sb-wrapper" ref={(el) => { containerRef.current = el; wrapperRef.current = el }}>
+    <div className="sb-wrapper" ref={(el) => { containerRef.current = el }}>
       {/* Pill */}
       <div className={`sb-pill${isHighlighted ? ' sb-pill--open' : ''}`}>
         <HugeiconsIcon icon={Search01Icon} size={18} color="#A8A29E" />
@@ -190,7 +177,7 @@ function SearchBar() {
 
       {/* Dropdown — only when 2+ chars typed */}
       {isActive && query.trim().length >= 2 && (loading || suggestions.length > 0) && (
-        <div className="sb-dropdown" role="listbox" style={{ position: 'fixed', top: dropdownPos.top, left: dropdownPos.left, width: dropdownPos.width, zIndex: 1000 }}>
+        <div className="sb-dropdown" role="listbox" onWheel={(e) => e.stopPropagation()}>
           <div className="sb-dropdown-scroll">
             {loading && suggestions.length === 0 && (
               <div className="sb-city-header" style={{ cursor: 'default' }}>
