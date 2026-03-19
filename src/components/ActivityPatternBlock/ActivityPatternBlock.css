@@ -1,0 +1,128 @@
+.apb2-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  box-shadow: 0px 1px 3px rgba(28,25,23,0.06), 0px 4px 16px rgba(28,25,23,0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.apb2-card:hover {
+  box-shadow: 0px 2px 8px rgba(28,25,23,0.08), 0px 8px 24px rgba(28,25,23,0.06);
+}
+
+.apb2-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.apb2-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.apb2-summary {
+  font-size: var(--font-size-s);
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+.apb2-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 80px;
+  margin-bottom: 8px;
+}
+
+.apb2-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: 4px;
+}
+
+.apb2-bar-wrap {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.apb2-bar {
+  width: 100%;
+  background: var(--stone-100);
+  border-radius: 2px 2px 0 0;
+  transition: background 0.15s ease;
+  min-height: 4px;
+}
+
+.apb2-bar--peak {
+  background: var(--blue-400);
+}
+
+.apb2-bar-col:hover .apb2-bar {
+  background: var(--stone-300);
+}
+
+.apb2-bar-col:hover .apb2-bar--peak {
+  background: var(--blue-500);
+}
+
+.apb2-hour-label {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.apb2-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.apb2-footer-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.apb2-footer-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.apb2-footer-dot--peak { background: var(--blue-400); }
+.apb2-footer-dot--quiet { background: var(--stone-200); }
+
+.apb2-footer-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+.apb2-footer-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.apb2-footer-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--color-border);
+}

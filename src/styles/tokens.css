@@ -1,0 +1,79 @@
+:root {
+  /* Ocean Blue */
+  --blue-50: #F1F9FF;
+  --blue-100: #EAF3FA;
+  --blue-200: #D7EAF7;
+  --blue-300: #B8DAF2;
+  --blue-400: #86C3E9;
+  --blue-500: #0EA5E9;
+  --blue-600: #0284C7;
+  --blue-700: #0369A1;
+  --blue-800: #075985;
+  --blue-900: #0C4A6E;
+
+  /* Stone (neutrals) */
+  --stone-0: #FFFFFF;
+  --stone-25: #F9F8F6;
+  --stone-50: #F5F5F4;
+  --stone-100: #E7E5E4;
+  --stone-200: #D6D3D1;
+  --stone-300: #A8A29E;
+  --stone-400: #78716C;
+  --stone-500: #6C6760;
+  --stone-900: #1C1917;
+
+  /* Emerald */
+  --emerald-500: #10B981;
+  --emerald-600: #059669;
+
+  /* Amber */
+  --amber-500: #F59E0B;
+
+  /* Red */
+  --red-500: #EF4444;
+  --red-600: #DC2626;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --radius-l: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Space */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-xs: 11px;
+  --font-size-s: 13px;
+  --font-size-m: 15px;
+  --font-size-l: 17px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 48px;
+  --font-size-6xl: 60px;
+  --font-size-7xl: 72px;
+
+  /* Semantic */
+  --color-bg: #F5F5F4;
+  --color-surface: #FFFFFF;
+  --color-border: #E7E5E4;
+  --color-text-primary: #1C1917;
+  --color-text-secondary: #6C6760;
+  --color-text-muted: #A8A29E;
+  --color-accent: #0284C7;
+  --color-accent-light: #EAF3FA;
+}

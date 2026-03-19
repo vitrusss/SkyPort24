@@ -1,0 +1,42 @@
+.ap-root {
+  min-height: 100vh;
+  background: #f4f2ee;
+  display: flex;
+  flex-direction: column;
+}
+
+.ap-main {
+  flex: 1;
+}
+
+.ap-container {
+  max-width: 1166px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.ap-gap-header {
+  height: 32px;
+}
+
+.ap-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 80px;
+}
+
+.ap-row-3col {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.ap-not-found {
+  font-family: var(--font-family);
+  font-size: var(--font-size-m);
+  color: var(--color-text-muted);
+  padding-top: 80px;
+  text-align: center;
+}

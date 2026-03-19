@@ -1,0 +1,93 @@
+.ltb-card {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  box-shadow: 0px 1px 3px rgba(28,25,23,0.06), 0px 4px 16px rgba(28,25,23,0.04);
+  transition: box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.ltb-card:hover {
+  box-shadow: 0px 2px 8px rgba(28,25,23,0.08), 0px 8px 24px rgba(28,25,23,0.06);
+}
+
+.ltb-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.ltb-hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.ltb-time-display {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.ltb-time {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.ltb-ampm {
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.ltb-date {
+  font-size: var(--font-size-l);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.ltb-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 14px 0;
+}
+
+.ltb-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ltb-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ltb-stat-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+.ltb-stat-value {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}

@@ -1,0 +1,262 @@
+.adb-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  box-shadow: 0px 1px 3px rgba(28,25,23,0.06), 0px 4px 16px rgba(28,25,23,0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.adb-card:hover {
+  box-shadow: 0px 2px 8px rgba(28,25,23,0.08), 0px 8px 24px rgba(28,25,23,0.06);
+}
+
+.adb-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.adb-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.adb-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.adb-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.adb-tab {
+  padding: 8px 20px;
+  border-radius: var(--radius-s);
+  font-size: var(--font-size-m);
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  background: transparent;
+  font-family: var(--font-family);
+  transition: all 0.15s ease;
+}
+
+.adb-tab:hover { background: var(--stone-50); }
+
+.adb-tab--active {
+  background: var(--blue-100);
+  color: var(--blue-600);
+  border-color: var(--blue-300);
+}
+
+.adb-date-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--stone-50);
+  border-radius: var(--radius-s);
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+}
+
+.adb-date-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  padding: 0 2px;
+  line-height: 1;
+  font-family: var(--font-family);
+  transition: color 0.15s;
+}
+
+.adb-date-btn:hover:not(:disabled) { color: var(--color-text-primary); }
+.adb-date-btn:disabled { opacity: 0.3; cursor: default; }
+
+.adb-date-label {
+  font-size: var(--font-size-s);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  min-width: 64px;
+  text-align: center;
+}
+
+.adb-date-input {
+  background: none;
+  border: none;
+  font-size: var(--font-size-s);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family);
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  overflow: hidden;
+  opacity: 0.6;
+}
+
+.adb-date-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.adb-filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.adb-filter {
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: all 0.15s ease;
+}
+
+.adb-filter:hover {
+  background: var(--stone-50);
+}
+
+.adb-filter--active {
+  background: #2C2C2A;
+  color: #FFFFFF;
+  border-color: #2C2C2A;
+}
+
+.adb-table {
+  min-height: 330px;
+}
+
+.adb-table-header {
+  display: grid;
+  grid-template-columns: 60px 90px 1fr 180px 130px 80px 60px;
+  gap: 8px;
+  padding: 0 12px 10px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.adb-row {
+  display: grid;
+  grid-template-columns: 60px 90px 1fr 180px 130px 80px 60px;
+  gap: 8px;
+  padding: 12px;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.15s ease;
+}
+
+.adb-row:last-child { border-bottom: none; }
+
+.adb-row:hover {
+  background: var(--stone-25);
+  border-radius: var(--radius-m);
+}
+
+.adb-time {
+  font-size: var(--font-size-m);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.adb-flight {
+  font-size: var(--font-size-s);
+  font-weight: 600;
+  color: var(--color-accent);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  letter-spacing: 0.03em;
+}
+
+.adb-place {
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.adb-airline-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.adb-airline-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.adb-airline-fallback {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: var(--blue-100);
+  color: var(--blue-700);
+  font-size: 8px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.adb-airline-name {
+  font-size: var(--font-size-s);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adb-status-cell {
+  display: flex;
+  align-items: center;
+}
+
+.adb-terminal {
+  font-size: var(--font-size-s);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.adb-gate {
+  font-size: var(--font-size-s);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.adb-footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+
+.adb-count {
+  font-size: var(--font-size-s);
+  color: var(--color-text-muted);
+}

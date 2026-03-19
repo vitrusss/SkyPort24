@@ -1,0 +1,447 @@
+/* ─── Hero card (unchanged) ─────────────────────────────────────────────── */
+
+.hero-card {
+  position: relative;
+  overflow: visible;
+  border-radius: 40px;
+  padding: 48px;
+  background: linear-gradient(73deg, #f3f3f1 1%, #faf9f7 99%);
+  box-shadow: 0px 18px 48px 0px rgba(28, 24, 20, 0.08);
+  font-family: 'Inter', sans-serif;
+  min-height: 420px;
+  flex-shrink: 0;
+}
+
+.hero-inner-highlight {
+  position: absolute;
+  inset: 0;
+  border-radius: 40px;
+  pointer-events: none;
+  box-shadow: inset 2px 5px 4px rgba(255, 255, 255, 0.83);
+  z-index: 1;
+}
+
+.hero-left {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 560px;
+}
+
+.hero-heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-heading-line1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  color: #1c1814;
+  display: block;
+}
+
+.hero-heading-line2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  background: linear-gradient(84deg, #86c3e9 14%, #3893c6 93%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #78716C;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 440px;
+}
+
+.hero-illustration {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  object-position: bottom right;
+  z-index: 0;
+  border-bottom-right-radius: 40px;
+}
+
+/* ─── SearchBar wrapper ─────────────────────────────────────────────────── */
+
+.sb-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 16px;
+  font-family: 'Inter', sans-serif;
+  z-index: 10;
+}
+
+/* ─── Pill ──────────────────────────────────────────────────────────────── */
+
+.sb-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 12px 12px 12px 24px;
+  box-shadow: 0px 24px 32px 0px rgba(59, 47, 21, 0.08);
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sb-pill--open {
+  border-color: #1c1917;
+  box-shadow: 0px 0px 0px 3px rgba(2, 132, 199, 0.12), 0px 24px 32px 0px rgba(59, 47, 21, 0.08);
+}
+
+.sb-search-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ─── Input ─────────────────────────────────────────────────────────────── */
+
+.sb-input {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: #1c1814;
+  border: none;
+  outline: none;
+  background: transparent;
+  min-width: 0;
+}
+
+.sb-input::placeholder {
+  color: #b0a99d;
+}
+
+/* ─── Cancel button ─────────────────────────────────────────────────────── */
+
+.sb-cancel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+  animation: sb-cancel-in 0.15s ease forwards;
+}
+
+.sb-cancel-btn:hover {
+  opacity: 0.7;
+}
+
+@keyframes sb-cancel-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── Search button ─────────────────────────────────────────────────────── */
+
+.sb-search-btn {
+  background: #e7e5e4;
+  border-radius: 9999px;
+  height: 52px;
+  padding: 0 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #a8a29e;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.15s ease, transform 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+}
+
+.sb-search-btn--active {
+  background: #1c1917;
+  color: #ffffff;
+}
+
+.sb-search-btn--active:hover {
+  background: #2d2926;
+}
+
+.sb-search-btn:active {
+  transform: scale(0.98);
+}
+
+.sb-search-btn:disabled {
+  cursor: default;
+}
+
+/* ─── Spinner ───────────────────────────────────────────────────────────── */
+
+.sb-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: sb-spin 0.7s linear infinite;
+}
+
+@keyframes sb-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Dropdown ──────────────────────────────────────────────────────────── */
+
+.sb-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0px 24px 32px 0px rgba(59, 47, 21, 0.08);
+  overflow: hidden;
+  z-index: 200;
+  list-style: none;
+  animation: fadeSlideIn 0.18s ease forwards;
+}
+
+.sb-dropdown-scroll {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.sb-dropdown-scroll::-webkit-scrollbar { width: 4px; }
+.sb-dropdown-scroll::-webkit-scrollbar-track { background: transparent; }
+.sb-dropdown-scroll::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 2px; }
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── City group ────────────────────────────────────────────────────────── */
+
+.sb-city-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeSlideIn 0.18s ease both;
+}
+
+.sb-group-sep {
+  height: 1px;
+  background: #f0ede8;
+  margin: 12px 0;
+}
+
+/* ─── City header ───────────────────────────────────────────────────────── */
+
+.sb-city-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sb-city-icon {
+  flex-shrink: 0;
+}
+
+.sb-city-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+}
+
+.sb-city-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #1c1814;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+
+.sb-city-state {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #a8a29e;
+  line-height: 1.2;
+}
+
+.sb-city-code {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #a8a29e;
+  text-transform: uppercase;
+  letter-spacing: 0.48px;
+  flex-shrink: 0;
+}
+
+/* ─── Airport list ──────────────────────────────────────────────────────── */
+
+.sb-airport-list {
+  background: #f5f5f4;
+  border-radius: 16px;
+  padding: 16px 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+
+.sb-airport-sep {
+  height: 1px;
+  background: #e7e5e4;
+  margin: 0 12px;
+  flex-shrink: 0;
+}
+
+/* ─── Airport row ───────────────────────────────────────────────────────── */
+
+.sb-airport-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: calc(100% + 40px);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  min-height: 44px;
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+  border-radius: 0;
+  margin-left: -20px;
+  margin-right: -20px;
+  transition: background 0.2s ease;
+}
+
+.sb-airport-row:hover {
+  background: rgba(2, 132, 199, 0.05);
+}
+
+.sb-airport-list li:first-child .sb-airport-row:hover {
+  border-radius: 8px 8px 0 0;
+}
+
+.sb-airport-list li:last-child .sb-airport-row:hover {
+  border-radius: 0 0 8px 8px;
+}
+
+.sb-airport-list li:only-child .sb-airport-row:hover {
+  border-radius: 8px;
+}
+
+.sb-airport-icon {
+  flex-shrink: 0;
+}
+
+.sb-airport-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #1c1814;
+  flex: 1;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.sb-airport-row:hover .sb-airport-name {
+  color: #0284c7;
+}
+
+.sb-airport-code {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #a8a29e;
+  text-transform: uppercase;
+  letter-spacing: 0.48px;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.sb-airport-row:hover .sb-airport-code {
+  color: #0369a1;
+}
+
+.sb-arrow-icon {
+  flex-shrink: 0;
+  color: #a8a29e;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.sb-airport-row:hover .sb-arrow-icon {
+  color: #0284c7;
+  transform: translateX(3px);
+}
+
+/* ─── Quick chips ───────────────────────────────────────────────────────── */
+
+.sb-quick-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #a8a29e;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.sb-quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sb-quick-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1c1814;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sb-quick-chip:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
